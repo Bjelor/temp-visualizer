@@ -1,0 +1,146 @@
+[
+  {
+    "name": "Stefan",
+    "date": "18.4.2022",
+    "time": "7:45",
+    "systolic": 134,
+    "diastolic": 88,
+    "pulse": 87
+  },
+  {
+    "name": "Stefan",
+    "date": "18.4.2022",
+    "time": "18:22",
+    "systolic": 144,
+    "diastolic": 89,
+    "pulse": 88
+  },
+  {
+    "name": "Stefan",
+    "date": "19.4.2022",
+    "time": "8:01",
+    "systolic": 138,
+    "diastolic": 87,
+    "pulse": 92
+  },
+  {
+    "name": "Stefan",
+    "date": "19.4.2022",
+    "time": "16:40",
+    "systolic": 149,
+    "diastolic": 95,
+    "pulse": 89
+  },
+  {
+    "name": "Stefan",
+    "date": "20.4.2022",
+    "time": "8:24",
+    "systolic": 132,
+    "diastolic": 92,
+    "pulse": 91
+  },
+  {
+    "name": "Stefan",
+    "date": "20.4.2022",
+    "time": "17:15",
+    "systolic": 151,
+    "diastolic": 96,
+    "pulse": 93
+  },
+  {
+    "name": "Stefan",
+    "date": "21.4.2022",
+    "time": "7:55",
+    "systolic": 142,
+    "diastolic": 94,
+    "pulse": 88
+  },
+  {
+    "name": "Stefan",
+    "date": "21.4.2022",
+    "time": "18:16",
+    "systolic": 168,
+    "diastolic": 97,
+    "pulse": 87
+  },
+  {
+    "name": "Stefan",
+    "date": "22.4.2022",
+    "time": "7:48",
+    "systolic": 154,
+    "diastolic": 102,
+    "pulse": 92
+  },
+  {
+    "name": "Elena",
+    "date": "18.4.2022",
+    "time": "7:25",
+    "systolic": 112,
+    "diastolic": 80,
+    "pulse": 67
+  },
+  {
+    "name": "Elena",
+    "date": "18.4.2022",
+    "time": "19:44",
+    "systolic": 110,
+    "diastolic": 79,
+    "pulse": 68
+  },
+  {
+    "name": "Elena",
+    "date": "19.4.2022",
+    "time": "8:28",
+    "systolic": 98,
+    "diastolic": 78,
+    "pulse": 64
+  },
+  {
+    "name": "Elena",
+    "date": "19.4.2022",
+    "time": "17:14",
+    "systolic": 110,
+    "diastolic": 82,
+    "pulse": 63
+  },
+  {
+    "name": "Elena",
+    "date": "20.4.2022",
+    "time": "8:11",
+    "systolic": 112,
+    "diastolic": 83,
+    "pulse": 64
+  },
+  {
+    "name": "Elena",
+    "date": "20.4.2022",
+    "time": "17:35",
+    "systolic": 160,
+    "diastolic": 95,
+    "pulse": 85
+  },
+  {
+    "name": "Elena",
+    "date": "21.4.2022",
+    "time": "7:49",
+    "systolic": 113,
+    "diastolic": 82,
+    "pulse": 62
+  },
+  {
+    "name": "Elena",
+    "date": "21.4.2022",
+    "time": "17:47",
+    "systolic": 122,
+    "diastolic": 81,
+    "pulse": 64
+  },
+  {
+    "name": "Elena",
+    "date": "22.4.2022",
+    "time": "8:38",
+    "systolic": 121,
+    "diastolic": 84,
+    "pulse": 71
+  }
+]

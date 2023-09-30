@@ -40,7 +40,7 @@ class GetPressureReadingsUseCase @Inject constructor(
 
     private fun String.parseAsLocalTime() = LocalTime.parse(
         this,
-        DateTimeFormatter.ofPattern("h:mm")
+        DateTimeFormatter.ofPattern("H:mm")
     )
 
     enum class Name(val value: String) {

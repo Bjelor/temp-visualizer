@@ -73,6 +73,10 @@ dependencies {
     // KSP
     implementation("com.google.devtools.ksp:symbol-processing-api:1.9.10-1.0.13")
 
+    // Moshi
+    implementation("com.squareup.moshi:moshi:1.14.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
+
     // Room
     implementation("androidx.room:room-runtime:2.5.2")
     annotationProcessor("androidx.room:room-compiler:2.5.2")

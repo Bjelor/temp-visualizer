@@ -14,8 +14,8 @@ class GetPressureReadingsUseCase @Inject constructor(
     private val pressureReadingDao: PressureReadingDao,
 ) {
 
-    operator fun invoke(name: Name): Flow<List<Reading>> =
-        pressureReadingDao.getReadingsByName(name.value)
+    operator fun invoke(patient: Patient): Flow<List<Reading>> =
+        pressureReadingDao.getReadingsByName(patient.name)
             .map { list ->
                 list.map { dto ->
                     dto.toDomain()
@@ -42,9 +42,4 @@ class GetPressureReadingsUseCase @Inject constructor(
         this,
         DateTimeFormatter.ofPattern("H:mm")
     )
-
-    enum class Name(val value: String) {
-        Stefan("Stefan"),
-        Elena("Elena"),
-    }
 }

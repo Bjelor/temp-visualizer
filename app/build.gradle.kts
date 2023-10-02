@@ -83,6 +83,11 @@ dependencies {
     ksp("androidx.room:room-compiler:2.5.2")
     implementation("androidx.room:room-ktx:2.5.2")
 
+    // Vico (Charts)
+    implementation("com.patrykandpatrick.vico:compose-m3:1.12.0")
+    implementation("com.patrykandpatrick.vico:core:1.12.0")
+    implementation("com.patrykandpatrick.vico:compose:1.12.0")
+
     // Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

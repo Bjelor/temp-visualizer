@@ -1,5 +1,6 @@
 package com.bjelor.tempvisualizer.ui
 
+import android.graphics.Color
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,9 +25,17 @@ import com.bjelor.tempvisualizer.domain.Reading
 import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
 import com.patrykandpatrick.vico.compose.chart.Chart
-import com.patrykandpatrick.vico.compose.chart.line.lineChart
+import com.patrykandpatrick.vico.compose.chart.column.columnChart
+import com.patrykandpatrick.vico.core.axis.AxisPosition
+import com.patrykandpatrick.vico.core.axis.formatter.AxisValueFormatter
+import com.patrykandpatrick.vico.core.chart.column.ColumnChart
+import com.patrykandpatrick.vico.core.chart.values.AxisValuesOverrider.Companion.fixed
+import com.patrykandpatrick.vico.core.component.shape.LineComponent
+import com.patrykandpatrick.vico.core.component.shape.Shapes
 import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatrick.vico.core.entry.entriesOf
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 @Composable
 fun PressureChart(
@@ -65,23 +74,50 @@ private fun PressureChartContent(
             )
         }
 
-        val pairs = readings.map {
-            Pair(
-                it.timestamp.dayOfYear,
-                it.pressure.systolic
+        val dates = readings.associate { reading ->
+            reading.timestamp.toLocalDate().toEpochDay()
+                .toFloat() to reading.timestamp.toLocalDate()
+        }
+        val diastolicEntries = readings.associate { reading ->
+            reading.timestamp.toLocalDate().toEpochDay() to reading.pressure.diastolic
+        }
+        val systolicEntries = readings.associate { reading ->
+            val key = reading.timestamp.toLocalDate().toEpochDay()
+            key to (reading.pressure.systolic - (diastolicEntries[key] ?: 0))
+        }
+        val chartEntryModelProducer1 = ChartEntryModelProducer(
+            listOf(
+                entriesOf(*diastolicEntries.toList().toTypedArray()),
+                entriesOf(*systolicEntries.toList().toTypedArray()),
             )
-        }.toTypedArray()
-        val entries = entriesOf(*pairs)
+        )
+        val dateAxisFormatter = AxisValueFormatter<AxisPosition.Horizontal.Bottom> { value, _ ->
+            (dates[value] ?: LocalDate.ofEpochDay(value.toLong()))
+                .format(DateTimeFormatter.ofPattern("d MMM"))
+        }
 
-        val chartEntryModelProducer1 = ChartEntryModelProducer(entries)
-
-        val lineChart = lineChart()
+        val columns: List<LineComponent> = listOf(
+            LineComponent(Color.TRANSPARENT),
+            LineComponent(
+                color = Color.BLACK,
+                shape = Shapes.roundedCornerShape(50),
+                thicknessDp = 4.dp.value,
+            ),
+        )
+        val columnChart = columnChart(
+            columns = columns,
+            mergeMode = ColumnChart.MergeMode.Stack,
+            axisValuesOverrider = fixed(minY = 30f, maxY = 180f)
+        )
 
         Chart(
-            chart = remember { lineChart },
+            modifier = Modifier.padding(16.dp),
+            chart = remember { columnChart },
             chartModelProducer = chartEntryModelProducer1,
             startAxis = rememberStartAxis(),
-            bottomAxis = rememberBottomAxis(),
+            bottomAxis = rememberBottomAxis(
+                valueFormatter = dateAxisFormatter,
+            ),
         )
 
         LazyColumn(

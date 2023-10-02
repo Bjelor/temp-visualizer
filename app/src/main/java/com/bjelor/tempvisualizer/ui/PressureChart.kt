@@ -114,7 +114,9 @@ private fun PressureChartContent(
             modifier = Modifier.padding(16.dp),
             chart = remember { columnChart },
             chartModelProducer = chartEntryModelProducer1,
-            startAxis = rememberStartAxis(),
+            startAxis = rememberStartAxis(
+                itemPlacer = remember { PressureAxisItemPlacer(30f, 6) }
+            ),
             bottomAxis = rememberBottomAxis(
                 valueFormatter = dateAxisFormatter,
             ),
